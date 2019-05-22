@@ -10,6 +10,10 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>Generic</module>
+<<<<<<< Updated upstream
+=======
+        <module>Costco</module>
+>>>>>>> Stashed changes
     </modules>
 
     <dependencyManagement>
