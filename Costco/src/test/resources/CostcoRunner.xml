@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+
+<suite name="Costco Automation Script " parallel="methods" thread-count="4">
+
+    <parameter name="platform" value="mac"/>
+    <parameter name="useCloudEnv" value="false"/>
+    <parameter name="cloudEnvName" value="browserstack"/>
+    <parameter name="os" value="OS X"/>
+    <parameter name="os_version" value="Sierra"/>
+    <parameter name="browserName" value="chrome"/>
+    <parameter name="browserVersion" value="53.0"/>
+    <parameter name="url" value="https://www.costco.com"/>
+
+    <test name="CostcoTest Home">
+        <classes>
+            <!--class name="regressionTest.CostcoPage1"/-->
+            <!--class name="regressionTest.TestClass3"/-->
+            <!--class name="regressionTest.BokenlinTest"/-->
+            <!--class name="regressionTest.PhotoTest"/-->
+            <!--class name="regressionTest.SignUpTest"/-->
+            <!--class name="regressionTest.CommonMethods"/-->
+            <!--class name="regressionTest.TestClass4"/-->
+            <!--class name="regressionTest.MembershipTest"/-->
+            <class name="regressionTest.CheckboxesTest"/>
+
+
+
+        </classes>
+    </test>
+</suite>
