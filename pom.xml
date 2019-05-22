@@ -10,9 +10,10 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>Generic</module>
+
         <module>cnn</module>
         <module>hotels</module>
-    </modules>
+
 
     <dependencyManagement>
 
