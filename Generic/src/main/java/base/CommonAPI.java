@@ -75,20 +75,19 @@ public class CommonAPI {
 
     public static WebDriver getCloudDriver(String browserName, String browserVersion, String platform, String cloudEnvName) throws MalformedURLException {
 
-        DesiredCapabilities capabilities = new DesiredCapabilities();
-        capabilities.setCapability("name", "Cloud Execution");
-        capabilities.setCapability("browser", browserName);
-
-        capabilities.setCapability("browser_version", browserVersion);
-        capabilities.setCapability("os", platform);
-        capabilities.setCapability("os_version", "Mojave");
+        DesiredCapabilities caps = new DesiredCapabilities();
+        caps.setCapability("browser", "Chrome");
+        caps.setCapability("browser_version", "74.0");
+        caps.setCapability("os", "OS X");
+        caps.setCapability("os_version", "Mojave");
+        caps.setCapability("resolution", "1600x1200");
+        caps.setCapability("name", "Bstack-[Java] Sample Test");
 
         if (cloudEnvName.equalsIgnoreCase("Saucelabs")) {
             //resolution for Saucelabs
-            driver = new RemoteWebDriver(new URL(SAUCE_URL), capabilities);
+            driver = new RemoteWebDriver(new URL(SAUCE_URL), caps);
         } else if (cloudEnvName.equalsIgnoreCase("Browserstack")) {
-            capabilities.setCapability("resolution", "1024x768");
-            driver = new RemoteWebDriver(new URL(BROWSERSTACK_URL), capabilities);
+            driver = new RemoteWebDriver(new URL(BROWSERSTACK_URL), caps);
         }
         return driver;
     }
@@ -327,7 +326,16 @@ public class CommonAPI {
     }
 
     public void typeByXpath(String locator, String value) {
-        driver.findElement(By.xpath(locator)).sendKeys(value);
+        WebElement e=driver.findElement(By.xpath(locator));
+        e.clear();
+        e.sendKeys(value);
+       // driver.findElement(By.xpath(locator)).sendKeys(value);
+    }
+
+    public void typeByXpath(WebElement element, String value) {
+        element.clear();
+        element.sendKeys(value);
+        // driver.findElement(By.xpath(locator)).sendKeys(value);
     }
 
     public void takeEnterKeys(String locator) {
