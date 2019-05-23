@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<!--        String browserName, String browserVersion, String platform, String cloudEnvName-->
+
+<suite name="expedia" parallel="false">
+<!--    @Parameters({"platform", "url", "browserName", "useCloudEnv", "browserVersion", "cloudEnvName"})-->
+
+    <parameter name="useCloudEnv" value="false"/>
+    <parameter name="cloudEnvName" value="browserstack"/>
+    <parameter name="platform" value="windows"/>
+<!--    <parameter name="os_version" value="Sierra"/>-->
+    <parameter name="browserName" value="chrome"/>
+    <parameter name="browserVersion" value="74.0"/>
+    <parameter name="url" value="https://www.expedia.com/"/>
+
+    <test name="expediahomepage">
+        <classes>
+            <class name="Testexpediahompage.testexpediahompage"/>
+<!--            <class name=""/>-->
+
+        </classes>
+    </test>
+</suite>

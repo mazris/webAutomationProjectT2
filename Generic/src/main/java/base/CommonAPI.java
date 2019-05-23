@@ -5,6 +5,7 @@ import com.relevantcodes.extentreports.LogStatus;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
 import org.openqa.selenium.remote.RemoteWebDriver;
@@ -62,7 +63,7 @@ public class CommonAPI {
     }
 
     @Parameters({"platform", "url", "browserName", "useCloudEnv", "browserVersion", "cloudEnvName"})
-    @BeforeMethod
+    @BeforeClass
     public static WebDriver setupDriver(String platform, String url, @Optional("chrome") String browserName,  boolean useCloudEnv, String browserVersion, String cloudEnvName) throws MalformedURLException {
         if (useCloudEnv) {
             driver = getCloudDriver(browserName, browserVersion, platform, cloudEnvName);
@@ -102,9 +103,9 @@ public class CommonAPI {
      */
     public static WebDriver getLocalDriver(String browserName, String platform) {
         if (platform.equalsIgnoreCase("mac") && browserName.equalsIgnoreCase("chrome")) {
-            System.setProperty("webdriver.chrome.driver", "../Generic/src/main/resources/drivers/chromedriver");
-        } else if (platform.equalsIgnoreCase("windows") && browserName.equalsIgnoreCase("chrome")) {
             System.setProperty("webdriver.chrome.driver", "../Generic/src/main/resources/drivers/chromedriver.exe");
+        } else if (platform.equalsIgnoreCase("windows") && browserName.equalsIgnoreCase("chrome")) {
+            System.setProperty("webdriver.chrome.driver", "../Generic/driver1/chromedriver.exe");
         }
         driver = new ChromeDriver();
         driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
@@ -269,7 +270,7 @@ public class CommonAPI {
         extent.close();
     }
 
-    @AfterMethod
+    @AfterClass
     public void quitDriver() {
         driver.close();
         driver.quit();
